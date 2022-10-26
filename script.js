@@ -13,10 +13,15 @@ const playerScore = document.getElementById('playerScore');
 const computerScore = document.getElementById('computerScore');
 const roundDis = document.getElementById('roundDis');
 const roundInfo = document.getElementById('roundInfo');
+const endgameModal = document.getElementById('endgameModal');
+const endgameMsg = document.getElementById('endgameMsg');
+const overlay = document.getElementById('overlay');
+const restartBtn = document.getElementById('restartBtn');
 
 rockbtn.addEventListener('click', () => onClick('rock'));
 paperbtn.addEventListener('click', () => onClick('paper'));
 scissorbtn.addEventListener('click', () => onClick('scissors'));
+restartBtn.addEventListener('click', () => restartGame());
 
 function getComputerChoice() {
     index = Math.floor(Math.random()*choices.length);
@@ -24,9 +29,14 @@ function getComputerChoice() {
 }
 
 function onClick(playerSelection) {
+    if (isGameOver() === false) {
     let computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
     updateChoices(playerSelection, computerSelection);
+    } 
+    if (isGameOver() === true) {
+        openEndgameModal();
+    }
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -81,3 +91,35 @@ function updateChoices(playerSelection, computerSelection) {
             break
     }
 }
+
+function isGameOver() {
+    if (playerCount === 5 || computerCount === 5) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function openEndgameModal() {
+    endgameModal.classList.add('active')
+    overlay.classList.add('active')
+  }
+  
+  function closeEndgameModal() {
+    endgameModal.classList.remove('active')
+    overlay.classList.remove('active')
+  }
+
+  function restartGame() {
+    computerCount = 0;
+    playerCount = 0;
+    roundWinner = '';
+    playerSelection = '';
+    computerSign.textContent = '?';
+    playerSign.textContent = '?';
+    playerScore.textContent = `Player: 0`;
+    computerScore.textContent = `Computer: 0`;
+    roundDis.textContent = `Choose your weapon`;
+    roundInfo.textContent = `First to score 5 points win the game`;
+    closeEndgameModal();
+  }
