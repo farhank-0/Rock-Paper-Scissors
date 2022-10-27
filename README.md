@@ -1,11 +1,11 @@
 # Rock Paper Scissors From the Odin Project
 I completed this project as part of the Odin Project foundations course and learnt fundamental lessons pertaining to web development. Below is a breakdown of what I learnt and how I used it in this project.
-##HTML file##
+##HTML file
 - Linked stylesheet and javascript in header of html document
   - Javascript was linked in header with a defer attribute to load after the elements on the page due to DOM manipulation in js file.
 - Utilized sectional approach to display elements
 
-##CSS file##
+##CSS file
 - Imported font from google fonts api
 - Declared global variables using :root for color scheme
 - Utilized universal selector to ensure no default padding or margins were displayed
@@ -15,7 +15,7 @@ I completed this project as part of the Odin Project foundations course and lear
   - Used this technique for footer and end game modal
 - Learned how to implement transform and transition to make modal box appear and disappear based on active classes (changed by js file)
 
-##Javascript file##
+##Javascript file
 - Learned how to randomize selection of computer using an array and custom built function
 - Learned how to add an event listener so that player selection is made based on button click
 - Implemented the manipulation of DOM to change text content of html elements
