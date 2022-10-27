@@ -1,7 +1,33 @@
-header {
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/*Header*/
+:root {
+    --primary-dark: #1D3D61;
+    --secondary-dark: #002D61;
+    --primary-light: whitesmoke;
+    --secondary-light: #0069E0;
+    --secondary-hover: #0051AD;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Roboto;
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
+}
+
+.header {
     display: flex;
-    align-content: center;
     justify-content: center;
+    padding: 40px 0px;
+    font-size: 30px;
+    font-weight: bolder;
+    background-color: var(--secondary-dark);
 }
 
 .main-container {
@@ -9,9 +35,15 @@ header {
     flex-direction: column;
     align-items: center;
     justify-items: center;
+    font-size: 22px;
+}
+
+.sign {
+    font-size: 100px;
 }
 
 .round-container {
+    margin: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,23 +53,75 @@ header {
 .selections-container {
     margin: 65px;
     display: flex;
-    gap: 2rem;
+    gap: 5rem;
+}
+
+button {
+    font-size: 100px;
+    border-color: var(--secondary-light);
+    border-radius: 8px;
+    width: 200px;
+    background-color: var(--secondary-light);
+    color: whitesmoke;
+    cursor: pointer;
+  }
+
+button:hover {
+    background-color: var(--secondary-hover);
 }
 
 .buttons {
     display: flex;
-    gap: 4rem;
+    gap: 6rem;
 }
 
 .modal {
-    display: none;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    width: 300px;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 30px;
+    user-select: none;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--primary-dark);
+  }
+
+button.restart {
+    font-size: 32px;
 }
 
 .modal.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .modal-title {
+    font-size: 40px;
+    font-weight: bold;
+  }
+  
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.8;
+  }
+  
+  .overlay.active {
+    display: block;
+  }
 
 footer {
     position: absolute;
@@ -48,6 +132,6 @@ footer {
     justify-content: center;
     gap: 10px;
     width: 100%;
-    padding: 10px;
-    font-size: 20px;
+    padding: 25px;
+    font-size: 22px;
   }

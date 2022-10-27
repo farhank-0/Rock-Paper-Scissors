@@ -1,4 +1,4 @@
-const choices = ['rock', 'paper', 'scissors'];
+const choices = ['Rock', 'Paper', 'Scissors'];
 let computerCount = 0;
 let playerCount = 0;
 let roundWinner = '';
@@ -18,9 +18,9 @@ const endgameMsg = document.getElementById('endgameMsg');
 const overlay = document.getElementById('overlay');
 const restartBtn = document.getElementById('restartBtn');
 
-rockbtn.addEventListener('click', () => onClick('rock'));
-paperbtn.addEventListener('click', () => onClick('paper'));
-scissorbtn.addEventListener('click', () => onClick('scissors'));
+rockbtn.addEventListener('click', () => onClick('Rock'));
+paperbtn.addEventListener('click', () => onClick('Paper'));
+scissorbtn.addEventListener('click', () => onClick('Scissors'));
 restartBtn.addEventListener('click', () => restartGame());
 
 function getComputerChoice() {
@@ -34,7 +34,12 @@ function onClick(playerSelection) {
     playRound(playerSelection, computerSelection);
     updateChoices(playerSelection, computerSelection);
     } 
-    if (isGameOver() === true) {
+    if (isGameOver() === true && playerCount === 5) {
+        endgameMsg.textContent = 'You Won!';
+        openEndgameModal();
+    }
+    if (isGameOver() === true && computerCount === 5) {
+        endgameMsg.textContent = 'You Lose!'
         openEndgameModal();
     }
 }
@@ -45,9 +50,9 @@ function playRound(playerSelection, computerSelection) {
         roundDis.textContent = `Tie Play Again!`;
         roundInfo.textContent = `${playerSelection} ties with ${computerSelection}`;
     }
-    if ((playerSelection === 'rock' && computerSelection === 'paper') ||
-        (playerSelection === 'paper' && computerSelection === 'scissors') ||
-        (playerSelection === 'scissors' && computerSelection === 'rock'))
+    if ((playerSelection === 'Rock' && computerSelection === 'Paper') ||
+        (playerSelection === 'Paper' && computerSelection === 'Scissors') ||
+        (playerSelection === 'Scissors' && computerSelection === 'Rock'))
     {
         computerCount += 1;
         computerScore.textContent = `Computer: ${computerCount}`;
@@ -55,9 +60,9 @@ function playRound(playerSelection, computerSelection) {
         roundDis.textContent = `Computer Wins!`;
         roundInfo.textContent = `${computerSelection} beats ${playerSelection}`;
     }
-    if ((playerSelection === 'rock' && computerSelection === 'scissors') ||
-        (playerSelection === 'paper' && computerSelection === 'rock') ||
-        (playerSelection === 'scissors' && computerSelection === 'paper'))  
+    if ((playerSelection === 'Rock' && computerSelection === 'Scissors') ||
+        (playerSelection === 'Paper' && computerSelection === 'Rock') ||
+        (playerSelection === 'Scissors' && computerSelection === 'Paper'))  
     {
         playerCount += 1;
         playerScore.textContent = `Player: ${playerCount}`;
@@ -69,25 +74,25 @@ function playRound(playerSelection, computerSelection) {
 
 function updateChoices(playerSelection, computerSelection) {
     switch(playerSelection) {
-        case 'rock':
-            playerSign.textContent = 'rock';
+        case 'Rock':
+            playerSign.textContent = '✊';
             break;
-        case 'paper':
-            playerSign.textContent = 'paper';
+        case 'Paper':
+            playerSign.textContent = '✋';
             break;
-        case 'scissors':
-            playerSign.textContent = 'scissors';
+        case 'Scissors':
+            playerSign.textContent = '✌';
             break;
     }
     switch(computerSelection) {
-        case 'rock':
-            computerSign.textContent = 'rock';
+        case 'Rock':
+            computerSign.textContent = '✊';
             break;
-        case 'paper':
-            computerSign.textContent = 'paper';
+        case 'Paper':
+            computerSign.textContent = '✋';
             break;
-        case 'scissors':
-            computerSign.textContent = 'scissors';
+        case 'Scissors':
+            computerSign.textContent = '✌';
             break
     }
 }
